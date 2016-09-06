@@ -21,10 +21,21 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
         dropdownService.setActive($scope)
       })
 
+      $scope.topOffset = 0
+      $scope.leftOffset = 0
+
       var setMargin = function (type, amount) {
         var menu = getChildElementByClass('dropdownMenu')
         angular.element(menu)[0].style['margin-' + type] = '-' + amount + 'px'
       }
+
+      $scope.$watch('leftOffset', function () {
+        setMargin('left', $scope.leftOffset)
+      })
+
+      $scope.$watch('topOffset', function () {
+        setMargin('top', $scope.topOffset)
+      })
 
       var setMenuOffset = function () {
         var menu = getChildElementByClass('dropdownMenu')
@@ -46,24 +57,34 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
         }
 
         if ($scope.showDropdown) {
+          // this part helps keep the dropdown within
+          // the viewport itself, especially useful for mobile devices
           var viewport = menu.getBoundingClientRect()
           if (viewport.right - offset > window.innerWidth) {
-            // for mobile devices, center
-            if (window.innerWidth < 550) {
+            // this is if somehow our dropdown menu is larger than what
+            /// the device supports, we will just center it
+            if (viewport.width > window.innerWidth) {
               offset = viewport.right - window.innerWidth + ((window.innerWidth - menu.clientWidth)/2)
             // for offscreen, just move it just enough so its
             // within the viewport
             } else {
-              offset = (viewport.right - window.innerWidth) + 20
+              offset = (viewport.right - window.innerWidth) + 10
             }
           }
 
-          setMargin('top', 0)
-        } else {
-          setMargin('top', 9999)
-        }
+          $scope.topOffset = 0
 
-        setMargin('left', offset)
+          // this is done so that after the first shown we don't
+          // incorrectly set the leftOffset since viewport.right
+          // change depending on the leftOffset
+          if (!$scope.leftOffset) {
+            $scope.leftOffset = offset
+          }
+        } else {
+          // this helps us hide the element off the page but keeps it
+          // still visible so that the DOM can properly do its calculations
+          $scope.topOffset = 9999
+        }
       }
 
       var lockBodyScroll = function () {
