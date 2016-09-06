@@ -35,14 +35,14 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
         var leftMargin = window.getComputedStyle(toggle).marginLeft.replace("px", "")
         offset = menu.clientWidth / 2 - leftMargin
 
-        if (attrs.position === 'center') {
+        if (attrs.dropdownPosition === 'center') {
           offset = offset - toggle.offsetWidth / 2
-        } else if (attrs.position === 'left') {
+        } else if (attrs.dropdownPosition === 'left') {
           offset = offset - toggle.offsetWidth
         }
 
-        if (attrs.offset) {
-          offset = offset - attrs.offset
+        if (attrs.dropdownOffset) {
+          offset = offset + attrs.dropdownOffset
         }
 
         if ($scope.showDropdown) {
@@ -67,15 +67,15 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
       }
 
       var lockBodyScroll = function () {
-        if (!attrs.lockScroll) {
+        if (!attrs.dropdownLockBodyScroll) {
           return
         }
 
         if ($scope.showDropdown) {
           var b = document.getElementsByTagName('body')[0]
-          document.body.className += ' ngdialog-open'
+          document.body.className += ' ngsimpledropdown-scroll-lock'
         } else {
-          document.body.className = document.body.className.replace('ngdialog-open', '').trim()
+          document.body.className = document.body.className.replace('ngsimpledropdown-scroll-lock', '').trim()
         }
       }
 
