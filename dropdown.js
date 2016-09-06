@@ -33,7 +33,17 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
         var offset = 0
 
         var leftMargin = window.getComputedStyle(toggle).marginLeft.replace("px", "")
-        offset = menu.clientWidth / 2 - toggle.offsetWidth / 2 - leftMargin
+        offset = menu.clientWidth / 2 - leftMargin
+
+        if (attrs.position === 'center') {
+          offset = offset - toggle.offsetWidth / 2
+        } else if (attrs.position === 'left') {
+          offset = offset - toggle.offsetWidth
+        }
+
+        if (attrs.offset) {
+          offset = offset - attrs.offset
+        }
 
         if ($scope.showDropdown) {
           var viewport = menu.getBoundingClientRect()
