@@ -1,7 +1,6 @@
 ## ng-simple-dropdown
 
-A dependency free Angular dropdown menu that sleek and simple. This module
-infers the following
+A dependency free Angular dropdown menu that is sleek, simple and fast.
 
 ### Examples
 
