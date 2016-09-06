@@ -1,0 +1,22 @@
+{
+  "name": "ng-simple-dropdown",
+  "authors": [
+    "Steven Lu <tacticalazn@gmail.com>"
+  ],
+  "description": "A dependency free, simple & clean dropdown",
+  "main": "dropdown.js",
+  "keywords": [
+    "angular",
+    "dropdown",
+    "simple"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
