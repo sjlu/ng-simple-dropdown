@@ -3,6 +3,11 @@
 A dependency free Angular dropdown menu that sleek and simple. This module
 infers the following
 
+### Examples
+
+![image](https://cloud.githubusercontent.com/assets/329917/18288697/81205b8e-744a-11e6-9731-375298428789.png)
+![image](https://cloud.githubusercontent.com/assets/329917/18288713/970c45ac-744a-11e6-9e9f-ace8190b2363.png)
+
 ### Install
 
 * Install the following bower component
