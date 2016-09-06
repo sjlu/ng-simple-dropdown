@@ -49,6 +49,17 @@ open the the `.dropdownMenu`
 * `ng-show="showDropdown"` is also required if you want to actually toggle, this
 is done so that your controller can actually watch this variable.
 
+#### Attributes
+
+On the same element where you declared the `dropdown` directive, you can also
+add some attributes to change the functionality of the dropdown.
+
+| Attribute | Values | Description |
+| --- | --- | --- |
+| `dropdown-position` | right, left, center | Aligns the dropdown depending on this value and the position of the `dropdownToggle`. Default `right` |
+| `dropdown-offset` | `Integer` | Adds extra pixels to the positioning of the dropdown. This is useful if you have an arrow on top of your dropdown that needs to be positioned correctly |
+| `dropdown-lock-body-scroll` | `Boolean` | If this is set to `true`, it will lock the body preventing it from scrolling while the dropdown is open. Useful if you are using dropdown with some sort of scrolling |
+
 ### License
 
 MIT.
