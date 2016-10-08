@@ -53,7 +53,7 @@ app.directive('dropdown', function ($document, $window, $timeout, dropdownServic
         }
 
         if (attrs.dropdownOffset) {
-          offset = offset + attrs.dropdownOffset
+          offset = offset + parseInt(attrs.dropdownOffset)
         }
 
         if ($scope.showDropdown) {
